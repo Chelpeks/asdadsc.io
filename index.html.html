@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Видео на весь экран</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button id="playButton">Если Глеб пидор на жми на меня!!!</button>
+    <iframe id="videoFrame" src="https://www.youtube.com/embed/101aqh5WV3Q?enablejsapi=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+    <script>
+        document.getElementById('playButton').addEventListener('click', function() {
+            const iframe = document.getElementById('videoFrame');
+            iframe.style.display = 'block';
+            this.style.display = 'none';
+
+            // Запуск видео и переход в полноэкранный режим
+            iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+            iframe.requestFullscreen();
+        });
+    </script>
+</body>
+</html>
